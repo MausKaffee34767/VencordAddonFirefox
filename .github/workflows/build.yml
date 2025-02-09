@@ -23,7 +23,7 @@ jobs:
           pnpm run buildWeb
           jq '.browser_specific_settings.gecko.id = "addon@'$(mktemp -u XXXXXX)'"' dist/firefox-unpacked/manifest.json > tmp.json
           mv tmp.json dist/firefox-unpacked/manifest.json
-          web-ext sign -s $ROOT/dist/firefox-unpacked --api-key=${{ secrets.MOZILLA_API_KEY }} --api-secret=${{ secrets.MOZILLA_API_SECRET }}
+          web-ext sign -s dist/firefox-unpacked --api-key=${{ secrets.MOZILLA_API_KEY }} --api-secret=${{ secrets.MOZILLA_API_SECRET }}
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4.6.0
