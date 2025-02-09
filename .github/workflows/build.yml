@@ -18,7 +18,6 @@ jobs:
 
       - name: Build
         run: |
-          sudo apt install jq
           npm i -g pnpm web-ext
           pnpm i
           pnpm run buildWeb
