@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout VenCord
+      - name: Checkout Vencord
         uses: actions/checkout@v4.2.2
         with:
           repository: Vendicated/Vencord
