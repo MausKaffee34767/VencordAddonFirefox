@@ -27,6 +27,6 @@ jobs:
           web-ext sign -s $ROOT/dist/firefox-unpacked --api-key=${{ secrets.MOZILLA_API_KEY }} --api-secret=${{ secrets.MOZILLA_API_SECRET }}
 
       - name: Upload Build Artifact
-      - uses: actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.0
         with:
           path: dist/web-ext-artifacts/*.xpi
