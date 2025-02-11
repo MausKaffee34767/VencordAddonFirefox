@@ -34,3 +34,4 @@ jobs:
           tag_name: vencord-${{ env.VENCORD_COMMIT }}
           token: ${{ secrets.RELEASE_TOKEN }}
           name: ${{ env.VENCORD_COMMIT }}
+          token: ${{ secrets.RELEASE_TOKEN }}
