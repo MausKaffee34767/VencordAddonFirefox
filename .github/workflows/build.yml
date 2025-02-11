@@ -24,8 +24,13 @@ jobs:
           jq '.browser_specific_settings.gecko.id = "addon@'$(mktemp -u XXXXXX)'"' dist/firefox-unpacked/manifest.json > tmp.json
           mv tmp.json dist/firefox-unpacked/manifest.json
           web-ext sign -s dist/firefox-unpacked --api-key=${{ secrets.MOZILLA_API_KEY }} --api-secret=${{ secrets.MOZILLA_API_SECRET }} --channel=unlisted
+          echo -n "VENCORD_COMMIT=" >> $GITHUB_ENV
+          curl https://api.github.com/repos/Vendicated/Vencord/commits/main | jq -r .sha >> $GITHUB_ENV
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4.6.0
+      - name: Upload Artifact to Releases
+        uses: softprops/action-gh-release@v2.2.1
         with:
-          path: dist/*.xpi
+          files: dist/*.xpi
+          tag_name: vencord-${{ env.VENCORD_COMMIT }}
+          token: ${{ secrets.RELEASE_TOKEN }}
+          name: ${{ env.VENCORD_COMMIT }}
